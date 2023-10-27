@@ -9,11 +9,14 @@
     cd /proto   
     protoc -I=. *.proto --js_out=import_style=commonjs:../src/proto_out --grpc-web_out=import_style=commonjs,mode=grpcwebtext:../src/proto_out
 
-Compile Compile...
+3. curl command to get grpc:
+    grpcurl -plaintext -import-path proto -proto blog.proto 127.0.0.1:50052 blog.BlogRunTime/GetBlogg
+
+4. Compile Compile...
     $ cd /path/to/proto/folder # make sure to enter the proto folder to run the command from there
     $ protoc -I="./" --plugin=protoc-gen-grpc-java=/path/to/protoc-gen-grpc-java --grpc-java_out="./../java/src/main/java" --java_out="./../java/src/main/java" "./greet.proto"
 
-let’s understand the command:
+5. let’s understand the command:
     protoc: is the compiler
     -I: a flag to determine the location of the proto files (in our case in the current location)
     — plugin: is the flag we used to determine to which language we want to convert our ptoto file
@@ -22,7 +25,4 @@ let’s understand the command:
 
 
 
-curl command to get grpc:
-    grpcurl -plaintext -import-path proto -proto blog.proto 127.0.0.1:50052 blog.BlogRunTime/GetBlogg
 
-    https://www.koyeb.com/tutorials/build-and-deploy-a-grpc-web-app-using-rust-tonic-and-react
